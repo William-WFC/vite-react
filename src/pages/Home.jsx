@@ -3,11 +3,23 @@ import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import StoreCount from './StoreCount'
 import { useNavigate } from "react-router-dom";
-import { Button } from 'antd';
+import { Button, message } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { setIsFirst } from '../store/reducer/counterSlice';
 
 export default function() {
   const [count, setCount] = useState(0)
+  const isFirst = useSelector(state => state.counter.isFirst)
+  const dispatch = useDispatch()
   const navigate = useNavigate();
+//   保证首次进入登录页
+  if (isFirst) {
+    message.warning('登录失效，请重新登录')
+      setTimeout(() => {
+          navigate('/login')
+      }, 0)
+      dispatch(setIsFirst(false))
+  }
 
   return (
     <>

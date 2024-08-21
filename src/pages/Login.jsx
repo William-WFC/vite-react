@@ -3,11 +3,9 @@ import leftImg from '@/assets/images/login/banner-ico.png';
 import logoImg from '@/assets/images/login/big-logo.png';
 import { Button, Form, Input, message } from 'antd';
 import { useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
 
 export default function() {
     const navigate = useNavigate()
-    const [messageApi, contextHolder] = message.useMessage();
 
   const success = () => {
       message.open({

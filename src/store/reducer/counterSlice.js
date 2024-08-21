@@ -4,6 +4,7 @@ export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
     value: 0,
+    isFirst: true,
   },
   reducers: {
     increment: (state) => {
@@ -18,10 +19,13 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+    setIsFirst: (state, action) => {
+        state.isFirst = action.flag
+    }
   },
 });
 
 // 为每个 case reducer 函数生成 Action creators
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, setIsFirst } = counterSlice.actions;
 
 export default counterSlice.reducer;
